@@ -1,0 +1,79 @@
+[gd_scene format=2]
+
+[node name="BronzeStar" type="Node2D"]
+position = Vector2( 990, 595 )
+scale = Vector2( 2, 2 )
+
+[node name="Branch" type="Node2D" parent="."]
+rotation = -3.14159
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Branch"]
+scale = Vector2( 2, 2 )
+color = Color( 0.615686, 0.427451, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, 0, -24, 24, 0, 72 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branch"]
+scale = Vector2( 2, 2 )
+color = Color( 0.87451, 0.658824, 0.243137, 1 )
+polygon = PoolVector2Array( 0, 0, 24, 24, 0, 72 )
+
+[node name="Branch2" type="Node2D" parent="."]
+position = Vector2( 1.52588e-05, 3.8147e-06 )
+rotation = -1.88496
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Branch2"]
+scale = Vector2( 2, 2 )
+color = Color( 0.615686, 0.427451, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, 0, -24, 24, 0, 72 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branch2"]
+scale = Vector2( 2, 2 )
+color = Color( 0.768627, 0.462745, 0.027451, 1 )
+polygon = PoolVector2Array( 0, 0, 21.0913, 28.9337, 0, 72 )
+
+[node name="Branch3" type="Node2D" parent="."]
+position = Vector2( 1.52588e-05, 3.8147e-06 )
+rotation = -0.628319
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Branch3"]
+scale = Vector2( 2, 2 )
+color = Color( 0.768627, 0.462745, 0.027451, 1 )
+polygon = PoolVector2Array( 0, 0, -24, 24, 0, 72 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branch3"]
+scale = Vector2( 2, 2 )
+color = Color( 0.615686, 0.427451, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, 0, 21.0409, 28.8839, 0, 72 )
+
+[node name="Branch4" type="Node2D" parent="."]
+position = Vector2( 3.8147e-06, 0 )
+rotation = 0.628319
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Branch4"]
+scale = Vector2( 2, 2 )
+color = Color( 0.87451, 0.658824, 0.243137, 1 )
+polygon = PoolVector2Array( 0, 0, -24, 24, 0, 72 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branch4"]
+scale = Vector2( 2, 2 )
+color = Color( 0.615686, 0.427451, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, 0, 21.1603, 29.1246, 0, 72 )
+
+[node name="Branch5" type="Node2D" parent="."]
+position = Vector2( 1.52588e-05, 0 )
+rotation = 1.88496
+scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Branch5"]
+scale = Vector2( 2, 2 )
+color = Color( 0.768627, 0.462745, 0.027451, 1 )
+polygon = PoolVector2Array( 0, 0, -21.0913, 28.9337, 0, 72 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branch5"]
+scale = Vector2( 2, 2 )
+color = Color( 0.615686, 0.427451, 0.0588235, 1 )
+polygon = PoolVector2Array( 0, 0, 20.9682, 28.9367, 0, 72 )

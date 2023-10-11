@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Sokoban/Localization/LocalizationManager.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Sokoban/SceneChanger.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Sokoban/TerrainGeneration/LevelLoader.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/Managers/DatabaseManager.cs" type="Script" id=4]
+[ext_resource path="res://Scripts/Managers/SoundManager.cs" type="Script" id=5]
+[ext_resource path="res://Ressources/Themes/TilteCardTheme/BaseButtonTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Scenes/ButtonOptionsWorldWide.cs" type="Script" id=7]
+[ext_resource path="res://Scenes/TitleCard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/UI/LevelSelector/Map.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Ressources/Sound/Pirate_lofi.mp3" type="AudioStream" id=10]
+
+[node name="SceneChanger" type="Node2D"]
+script = ExtResource( 2 )
+baseScene = "res://Scenes/TitleCard.tscn"
+titlePackedScene = ExtResource( 8 )
+worldPackedScene = ExtResource( 9 )
+childHandlerPath = NodePath("ChildHandler")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 14
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 1616.0
+margin_top = 24.0
+margin_right = 1900.0
+margin_bottom = 145.0
+theme = ExtResource( 6 )
+text = "OPTIONS"
+script = ExtResource( 7 )
+optionsPath = "res://Scenes/UI/Options.tscn"
+
+[node name="DatabaseManager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="LocalizatioManager" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="LevelLoader" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource( 5 )
+nSoundEmitter = 25
+musicEmitterPath = NodePath("Music")
+
+[node name="Music" type="AudioStreamPlayer" parent="SoundManager"]
+pause_mode = 2
+stream = ExtResource( 10 )
+autoplay = true
+
+[node name="ChildHandler" type="Node" parent="."]

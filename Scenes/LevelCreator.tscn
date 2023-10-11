@@ -1,0 +1,345 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Assets/BaseAssets/WaterplayerPlayerGoingDownReal.png" type="Texture" id=1]
+[ext_resource path="res://Assets/BaseAssets/DirtPlayerGoingDownReal.png" type="Texture" id=2]
+[ext_resource path="res://Assets/BaseAssets/DirtTargetReal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/BaseAssets/WaterTargetReal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BaseAssets/WaterBlockReal.png" type="Texture" id=5]
+[ext_resource path="res://Assets/BaseAssets/DirtCrateReal.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Managers/LevelCreatorManager.cs" type="Script" id=7]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/TargetWaterBlock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Objects/LevelCreator/TilePlacer.cs" type="Script" id=9]
+[ext_resource path="res://Ressources/Font/tmp_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scenes/Tiles/TileDirtBlock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/TileWaterBlock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/WaterPlayer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/Wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/PlayerDirt.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/CrateWater.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Assets/BaseAssets/WallReal.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/CrateDirt.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/TargetDirtBlock.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/LevelCreatorBackground.jpg" type="Texture" id=20]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/AnimatedButtons.cs" type="Script" id=21]
+[ext_resource path="res://Scenes/LevelPackage.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/BaseAssets/DirtBlockReal.png" type="Texture" id=23]
+[ext_resource path="res://Assets/BaseAssets/WaterCrateReal.png" type="Texture" id=24]
+[ext_resource path="res://Scenes/Tiles/AmbianceFlo/TileDirtBlock.tscn" type="PackedScene" id=25]
+
+[sub_resource type="Theme" id=10]
+default_font = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.733333, 0.72549, 0.184314, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.890196, 0.882353, 0.207843, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.835294, 0.831373, 0.168627, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.541176, 0.537255, 0.117647, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.854902, 0.854902, 0.854902, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.721569, 0.721569, 0.721569, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id=4]
+default_font = ExtResource( 10 )
+LineEdit/colors/clear_button_color = Color( 1, 1, 1, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 1, 1, 1, 1 )
+LineEdit/colors/font_color = Color( 1, 1, 1, 1 )
+LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0, 0, 0, 0.501961 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 3 )
+LineEdit/styles/normal = SubResource( 5 )
+LineEdit/styles/read_only = null
+SpinBox/icons/updown = null
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 10 )
+
+[sub_resource type="Theme" id=1]
+
+[node name="LevelCreator" type="Node2D"]
+
+[node name="BackGround" type="Sprite" parent="."]
+modulate = Color( 0.364706, 0.368627, 0.454902, 1 )
+position = Vector2( 956.5, 542 )
+scale = Vector2( 1.33171, 1.1 )
+texture = ExtResource( 20 )
+
+[node name="TileContainer" type="Node2D" parent="."]
+position = Vector2( 494, 103 )
+scale = Vector2( 1.1, 1.1 )
+
+[node name="LevelCreatorManager" type="Node2D" parent="."]
+position = Vector2( -1, 0 )
+script = ExtResource( 7 )
+TILE_APPARITION_SCALE_MULTIPLIER = 0.5
+JSON_LEVEL_LINE = 151
+JSON_LEVEL_LINE_PAR_OFFSET = 5
+levelPackagePackedScene = ExtResource( 22 )
+gridContainerPath = NodePath("../TileContainer")
+buttonContainerPath = NodePath("../UI/ButtonsContainer")
+saveButtonPath = NodePath("../UI/SaveButton")
+playButtonPath = NodePath("../UI/PlayButton")
+saveButtonTweenPath = NodePath("../UI/SaveButton/Tween")
+parSpinboxPath = NodePath("../UI/SpinBox")
+activeTile = ExtResource( 25 )
+dirtTile = ExtResource( 25 )
+waterTile = ExtResource( 12 )
+waterBoxTile = ExtResource( 16 )
+dirtBoxTile = ExtResource( 18 )
+dirtPlayerTile = ExtResource( 15 )
+waterPlayerTile = ExtResource( 13 )
+targetDirtTile = ExtResource( 19 )
+targetWaterTile = ExtResource( 8 )
+wallTile = ExtResource( 14 )
+
+[node name="TilePlacer" type="Node2D" parent="."]
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 9 )
+MINIMUM_SNAP_DISTANCE = 50.0
+BLINK_FACTOR = 0.02
+
+[node name="TileDirtBlock" parent="TilePlacer" instance=ExtResource( 11 )]
+use_parent_material = true
+
+[node name="UI" type="Control" parent="."]
+margin_left = -8.0
+margin_top = -3.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="SaveButton" type="Button" parent="UI"]
+margin_left = 1544.0
+margin_top = 459.0
+margin_right = 1805.0
+margin_bottom = 663.0
+rect_pivot_offset = Vector2( 130, 102 )
+theme = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "save"
+script = ExtResource( 21 )
+
+[node name="Tween" type="Tween" parent="UI/SaveButton"]
+
+[node name="PlayButton" type="Button" parent="UI"]
+margin_left = 1544.0
+margin_top = 726.0
+margin_right = 1810.0
+margin_bottom = 916.0
+rect_pivot_offset = Vector2( 133, 95 )
+theme = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+text = "play"
+script = ExtResource( 21 )
+
+[node name="SpinBox" type="SpinBox" parent="UI"]
+margin_left = 1534.0
+margin_top = 279.0
+margin_right = 2090.0
+margin_bottom = 460.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = SubResource( 4 )
+min_value = 1.0
+max_value = 493.0
+value = 10.0
+
+[node name="ParLabel" type="Label" parent="UI"]
+margin_left = 1585.0
+margin_top = 179.0
+margin_right = 1769.0
+margin_bottom = 280.0
+theme = SubResource( 2 )
+text = "PAR"
+
+[node name="ButtonsContainer" type="GridContainer" parent="UI"]
+margin_left = 33.0
+margin_top = 31.0
+margin_right = 216.0
+margin_bottom = 438.0
+rect_scale = Vector2( 2, 2 )
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="1" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/1"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="2" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 80.0
+margin_right = 140.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/2"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="3" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 80.0
+margin_right = 60.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/3"]
+scale = Vector2( 0.6, 0.461538 )
+texture = ExtResource( 24 )
+centered = false
+
+[node name="4" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 80.0
+margin_top = 80.0
+margin_right = 140.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/4"]
+scale = Vector2( 0.6, 0.457692 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="5" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 160.0
+margin_right = 60.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/5"]
+scale = Vector2( 0.6, 0.473077 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="6" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 80.0
+margin_top = 160.0
+margin_right = 140.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/6"]
+scale = Vector2( 0.6, 0.457692 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 1 )
+centered = false
+
+[node name="7" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 240.0
+margin_right = 60.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/7"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="8" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 80.0
+margin_top = 240.0
+margin_right = 140.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/8"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="9" type="Button" parent="UI/ButtonsContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 320.0
+margin_right = 60.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 60, 60 )
+rect_pivot_offset = Vector2( 37, 37 )
+theme = SubResource( 1 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="UI/ButtonsContainer/9"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true

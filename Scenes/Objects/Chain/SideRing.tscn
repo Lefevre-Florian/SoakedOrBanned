@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Objects/Chain/ChainLink.cs" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 40 )
+
+[node name="Node2D" type="RigidBody2D"]
+script = ExtResource( 1 )
+topPosPath = NodePath("TopPos")
+bottomPosPath = NodePath("BottomPos")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -1.14286, 32 )
+scale = Vector2( 0.285714, 0.625 )
+z_index = 4
+color = Color( 0.431373, 0.431373, 0.431373, 1 )
+polygon = PoolVector2Array( -24, -64, 32, -64, 32, 64, -24, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 32 )
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="TopPos" type="Position2D" parent="."]
+
+[node name="BottomPos" type="Position2D" parent="."]
+position = Vector2( 0, 64 )

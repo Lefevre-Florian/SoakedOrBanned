@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Winscreen/SilverStar2.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/Stars.cs" type="Script" id=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0129032, 0.858065, 1 )
+colors = PoolColorArray( 0.756863, 0.756863, 0.756863, 1, 0.756863, 0.756863, 0.756863, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+color_ramp = SubResource( 3 )
+
+[node name="StarOne" type="TextureRect"]
+margin_left = 658.0
+margin_right = 958.0
+margin_bottom = 281.0
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 151, 155 )
+amount = 400
+lifetime = 1.5
+randomness = 1.0
+process_material = SubResource( 1 )

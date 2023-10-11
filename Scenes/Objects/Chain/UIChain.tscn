@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Objects/Chain/StraightRing.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/Chain/SideRing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Chain/BallChain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Objects/Chain/Chain.cs" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Chain" type="Node2D"]
+script = ExtResource( 4 )
+length = 15
+sideChainFactory = ExtResource( 2 )
+frontChainFactory = ExtResource( 1 )
+spawnPointPath = NodePath("spawnPoint")
+ballPath = NodePath("Ball")
+mouseCollisionPath = NodePath("MouseCollision")
+
+[node name="MouseCollision" type="KinematicBody2D" parent="."]
+position = Vector2( -72, -72 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseCollision"]
+position = Vector2( 10, 12 )
+shape = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="MouseCollision"]
+visible = false
+polygon = PoolVector2Array( -1, 0, 7, 22, 14, 16, 22, 22, 24, 16, 19, 11, 24, 5 )
+
+[node name="spawnPoint" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnPoint"]
+shape = SubResource( 1 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 380, 297 )
+z_index = 20
+mass = 0.00102041
+gravity_scale = 0.0
+sleeping = true

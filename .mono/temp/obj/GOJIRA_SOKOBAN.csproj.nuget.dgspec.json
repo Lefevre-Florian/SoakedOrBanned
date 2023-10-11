@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\lefev\\OneDrive\\Bureau\\ISART\\FirstYear\\Sokoban\\GOJIRA_SOKOBAN.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\lefev\\OneDrive\\Bureau\\ISART\\FirstYear\\Sokoban\\GOJIRA_SOKOBAN.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lefev\\OneDrive\\Bureau\\ISART\\FirstYear\\Sokoban\\GOJIRA_SOKOBAN.csproj",
+        "projectName": "GOJIRA_SOKOBAN",
+        "projectPath": "C:\\Users\\lefev\\OneDrive\\Bureau\\ISART\\FirstYear\\Sokoban\\GOJIRA_SOKOBAN.csproj",
+        "packagesPath": "C:\\Users\\lefev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lefev\\OneDrive\\Bureau\\ISART\\FirstYear\\Sokoban\\.mono\\temp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\lefev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packages.stride3d.net/nuget": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

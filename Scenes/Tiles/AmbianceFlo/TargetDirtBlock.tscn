@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/BaseAssets/DirtTargetReal.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Tiles/TileDirtBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Objects/Goal.cs" type="Script" id=3]
+
+[node name="TargetDirtBlock" instance=ExtResource( 2 )]
+texture = ExtResource( 1 )
+script = ExtResource( 3 )

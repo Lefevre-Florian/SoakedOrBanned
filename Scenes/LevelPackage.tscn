@@ -1,0 +1,230 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/Managers/GameManager.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Managers/MovementsManager.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/Sokoban/TerrainGeneration/GridManager.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/Ambiances/Ambiances.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/TipsCurtain.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Sokoban/PathFinding/Pathfinding.cs" type="Script" id=6]
+[ext_resource path="res://Scripts/Managers/UIManager.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/Sokoban/UI/BaseTranslation/TranslableLabel.cs" type="Script" id=8]
+[ext_resource path="res://Ressources/Themes/TilteCardTheme/BaseButtonTheme.tres" type="Theme" id=9]
+[ext_resource path="res://Scenes/Particles/Tsunami.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonNormal.tres" type="StyleBox" id=11]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonHover.tres" type="StyleBox" id=12]
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Assets/BGLevel.png" type="Texture" id=14]
+
+[node name="Root" type="Node2D"]
+
+[node name="Tsunami" parent="." instance=ExtResource( 10 )]
+position = Vector2( -12, 4 )
+
+[node name="PathfindingManager$" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource( 1 )
+winScenePath = "res://Scenes/UI/Winscreen/Winscreen.tscn"
+popupContainerPath = NodePath("../PopupContainer")
+blipDuration = 0.5
+nBlip = 2
+blipEaseType = 2
+
+[node name="MovementManager" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="GridManager" type="Node2D" parent="."]
+position = Vector2( 0, -2 )
+script = ExtResource( 3 )
+lvlElements = {
+"#": "res://Scenes/Tiles/Wall.tscn",
+"+": "res://Scenes/Tiles/TileWaterBlock.tscn",
+"-": "res://Scenes/Tiles/TileDirtBlock.tscn",
+"A": "res://Scenes/Tiles/TargetWaterBlock.tscn",
+"B": "res://Scenes/Tiles/CrateWater.tscn",
+"P": "res://Scenes/Players/WaterPlayer.tscn",
+"a": "res://Scenes/Tiles/TargetDirtBlock.tscn",
+"b": "res://Scenes/Tiles/CrateDirt.tscn",
+"p": "res://Scenes/Players/PlayerDirt.tscn"
+}
+gridContainerPath = NodePath("../GridContainer")
+_levelIndex = 7
+duration = 0.7
+transitionType = 10
+transitionEase = 2
+tokenSpawnDuration = 0.5
+spawnScale = 0.75
+tokenEase = 2
+
+[node name="AmbianceManager" parent="GridManager" instance=ExtResource( 4 )]
+
+[node name="GridContainer" type="Node" parent="."]
+
+[node name="PopupContainer" type="Node2D" parent="."]
+z_index = 1000
+
+[node name="Control" type="Control" parent="PopupContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 9 )
+script = ExtResource( 7 )
+levelNumberPath = NodePath("Level/LevelNb")
+levelParPath = NodePath("Par/ParNb")
+actionsCountPath = NodePath("Actions/ActionsCount")
+authorNamePath = NodePath("Author/AuthorName")
+undoButtonPath = NodePath("CanvasLayer/Buttons/Undo")
+redoButtonPath = NodePath("CanvasLayer/Buttons/Redo")
+retryButtonPath = NodePath("CanvasLayer/Buttons/Retry")
+retryTimer = 0.25
+
+[node name="TipsWindow" parent="UI" instance=ExtResource( 5 )]
+
+[node name="Level" type="HSplitContainer" parent="UI"]
+margin_left = 24.0
+margin_top = 808.0
+margin_right = 374.0
+margin_bottom = 889.0
+rect_pivot_offset = Vector2( -433, 227 )
+
+[node name="Label" type="Label" parent="UI/Level"]
+margin_top = 10.0
+margin_right = 300.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 300, 0 )
+text = "LABEL_LEVEL"
+clip_text = true
+script = ExtResource( 8 )
+
+[node name="LevelNb" type="Label" parent="UI/Level"]
+margin_left = 312.0
+margin_top = 10.0
+margin_right = 350.0
+margin_bottom = 71.0
+text = "0"
+
+[node name="Par" type="HSplitContainer" parent="UI"]
+margin_left = 24.0
+margin_top = 882.0
+margin_right = 374.0
+margin_bottom = 963.0
+
+[node name="Label" type="Label" parent="UI/Par"]
+margin_top = 10.0
+margin_right = 300.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 300, 0 )
+text = "LABEL_PAR"
+clip_text = true
+script = ExtResource( 8 )
+
+[node name="ParNb" type="Label" parent="UI/Par"]
+margin_left = 312.0
+margin_top = 10.0
+margin_right = 350.0
+margin_bottom = 71.0
+text = "0"
+
+[node name="Actions" type="HSplitContainer" parent="UI"]
+margin_left = 24.0
+margin_top = 964.0
+margin_right = 374.0
+margin_bottom = 1045.0
+
+[node name="Label" type="Label" parent="UI/Actions"]
+margin_top = 10.0
+margin_right = 300.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 300, 0 )
+text = "LABEL_ACTIONS"
+clip_text = true
+script = ExtResource( 8 )
+
+[node name="ActionsCount" type="Label" parent="UI/Actions"]
+margin_left = 312.0
+margin_top = 10.0
+margin_right = 350.0
+margin_bottom = 71.0
+text = "0"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="Buttons" type="VBoxContainer" parent="UI/CanvasLayer"]
+margin_left = 1556.0
+margin_top = 192.0
+margin_right = 1908.0
+margin_bottom = 705.0
+custom_constants/separation = 75
+alignment = 1
+
+[node name="Undo" type="Button" parent="UI/CanvasLayer/Buttons"]
+margin_top = 69.0
+margin_right = 352.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 75 )
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+text = "UNDO"
+
+[node name="Redo" type="Button" parent="UI/CanvasLayer/Buttons"]
+margin_top = 219.0
+margin_right = 352.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 0, 75 )
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+text = "REDO"
+
+[node name="Retry" type="Button" parent="UI/CanvasLayer/Buttons"]
+margin_top = 369.0
+margin_right = 352.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 0, 75 )
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+text = "RETRY"
+
+[node name="Author" type="VBoxContainer" parent="UI"]
+margin_left = 1560.0
+margin_top = 920.0
+margin_right = 1912.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( -433, 227 )
+
+[node name="Label" type="Label" parent="UI/Author"]
+margin_right = 352.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 300, 0 )
+text = "LABEL_AUTHOR"
+align = 2
+clip_text = true
+script = ExtResource( 8 )
+
+[node name="AuthorName" type="Label" parent="UI/Author"]
+margin_top = 65.0
+margin_right = 352.0
+margin_bottom = 126.0
+align = 2
+autowrap = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = -38.0
+margin_top = -40.0
+margin_right = 2008.0
+margin_bottom = 1124.0
+color = Color( 0, 0, 0, 0.45098 )

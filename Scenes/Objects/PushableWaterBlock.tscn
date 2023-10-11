@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/white_circle.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Objects/PushableBox.cs" type="Script" id=2]
+[ext_resource path="res://Assets/ParticleMaterial/WaterBlockLinkParticle.tres" type="Material" id=3]
+
+[node name="PushableWaterBlock" type="Polygon2D"]
+color = Color( 0.32549, 0.47451, 0.980392, 1 )
+offset = Vector2( -305.88, -209.495 )
+polygon = PoolVector2Array( 270, 170, 342, 170, 342, 248, 270, 248 )
+script = ExtResource( 2 )
+_isWaterType = true
+
+[node name="LinkParticle" type="Node2D" parent="."]
+
+[node name="Right" type="Particles2D" parent="LinkParticle"]
+position = Vector2( 34.958, 0 )
+emitting = false
+amount = 300
+process_material = ExtResource( 3 )
+texture = ExtResource( 1 )
+
+[node name="Down" type="Particles2D" parent="LinkParticle"]
+position = Vector2( 0, 36.729 )
+rotation = 1.5708
+emitting = false
+amount = 300
+process_material = ExtResource( 3 )
+texture = ExtResource( 1 )
+
+[node name="Left" type="Particles2D" parent="LinkParticle"]
+position = Vector2( -34.44, 0 )
+rotation = 3.14159
+emitting = false
+amount = 300
+process_material = ExtResource( 3 )
+texture = ExtResource( 1 )
+
+[node name="Up" type="Particles2D" parent="LinkParticle"]
+position = Vector2( 0, -36.39 )
+rotation = -1.5708
+emitting = false
+amount = 300
+process_material = ExtResource( 3 )
+texture = ExtResource( 1 )

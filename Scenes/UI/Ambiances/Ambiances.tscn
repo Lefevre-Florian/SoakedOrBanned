@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Sokoban/TerrainGeneration/Ambiance.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Objects/AmbianceManager.cs" type="Script" id=2]
+
+[node name="AmbianceManager" type="Node"]
+script = ExtResource( 2 )
+
+[node name="AmbianceFlo" type="Node" parent="."]
+script = ExtResource( 1 )
+dir = "res://Scenes/Tiles/AmbianceFlo"
+
+[node name="AmbianceTho" type="Node" parent="."]
+script = ExtResource( 1 )
+dir = "res://Scenes/Tiles/AmbianceTho"
+
+[node name="AmbiancePA" type="Node" parent="."]
+script = ExtResource( 1 )
+dir = "res://Scenes/Tiles/AmbiancePA"

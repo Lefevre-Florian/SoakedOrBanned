@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/white_circle.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Tiles/TileDirtBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Objects/Goal.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Noel/DirtTargetNoel.png" type="Texture" id=4]
+
+[node name="TargetDirtBlock" instance=ExtResource( 2 )]
+position = Vector2( -12, 37 )
+texture = ExtResource( 4 )
+offset = Vector2( 12, -37 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+visible = false
+texture = ExtResource( 1 )

@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Halloween/DirtPlayerGoingRightHalloween.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Objects/Player.cs" type="Script" id=2]
+[ext_resource path="res://Assets/Halloween/DirtPlayerGoingUpHalloweenReal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Halloween/DirtPlayerGoingLzftHalloween.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Halloween/DirtPlayerGoingDownHalloween.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Particles/WalkParticles.tscn" type="PackedScene" id=6]
+
+[node name="LandPlayer" type="Sprite"]
+position = Vector2( 1, 0 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -30 )
+script = ExtResource( 2 )
+directionsTextures = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ) ]
+walkParticlesPath = ExtResource( 6 )

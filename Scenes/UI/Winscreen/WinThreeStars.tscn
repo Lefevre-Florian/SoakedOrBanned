@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/ParticleMaterial/multicolorGradient.tres" type="Texture" id=3]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/StarLoader.cs" type="Script" id=5]
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 70, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_initial_ramp = ExtResource( 3 )
+
+[node name="WinThreeStars" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+starPath = "res://Scenes/UI/Winscreen/Stars/GoldenStar.tscn"
+starContainerPath = NodePath("VBoxContainer/StarsContainer")
+sideParticlesContainerPath = NodePath("SideParticles")
+starsNb = 3
+
+[node name="SideParticles" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2( -304, 0 )
+
+[node name="Particles2D" type="Particles2D" parent="SideParticles"]
+position = Vector2( 507, 203 )
+emitting = false
+amount = 1000
+explosiveness = 0.5
+process_material = SubResource( 4 )
+
+[node name="Particles2D2" type="Particles2D" parent="SideParticles"]
+position = Vector2( 746, 51 )
+emitting = false
+amount = 1000
+explosiveness = 0.5
+process_material = SubResource( 4 )
+
+[node name="Particles2D3" type="Particles2D" parent="SideParticles"]
+position = Vector2( 1109, 139 )
+emitting = false
+amount = 1000
+explosiveness = 0.5
+process_material = SubResource( 4 )
+
+[node name="Particles2D4" type="Particles2D" parent="SideParticles"]
+position = Vector2( 1465, 88 )
+emitting = false
+amount = 1000
+explosiveness = 0.5
+process_material = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 65.0
+
+[node name="StarsContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1920.0
+alignment = 1
+
+[node name="Container" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 4.0
+margin_right = 1920.0
+margin_bottom = 65.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Container"]
+margin_left = 859.0
+margin_right = 1061.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "PERFECT !"
+uppercase = true

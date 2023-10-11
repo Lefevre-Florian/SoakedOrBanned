@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pirate_lofi.mp3-1fd9f66a06ff3ef92541821b7a856609.mp3str"
+
+[deps]
+
+source_file="res://Ressources/Sound/Pirate_lofi.mp3"
+dest_files=[ "res://.import/Pirate_lofi.mp3-1fd9f66a06ff3ef92541821b7a856609.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

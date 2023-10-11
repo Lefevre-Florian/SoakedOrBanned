@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GOJIRA_SOKOBAN", "GOJIRA_SOKOBAN.csproj", "{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{BE270600-7F4C-47B7-B29D-7E9BF4857BD3}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

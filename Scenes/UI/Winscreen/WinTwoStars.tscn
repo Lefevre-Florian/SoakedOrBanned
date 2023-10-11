@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/ParticleMaterial/multicolorGradient.tres" type="Texture" id=5]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/StarLoader.cs" type="Script" id=6]
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 1.0
+flag_disable_z = true
+direction = Vector3( -1, -1, 0 )
+spread = 25.0
+gravity = Vector3( 0, 150, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_initial_ramp = ExtResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 1.0
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+spread = 25.0
+gravity = Vector3( 0, 150, 0 )
+initial_velocity = 150.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_initial_ramp = ExtResource( 5 )
+
+[node name="WinThreeStars" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+starPath = "res://Scenes/UI/Winscreen/Stars/SilverStar.tscn"
+starContainerPath = NodePath("VBoxContainer/StarsContainer")
+sideParticlesContainerPath = NodePath("SideParticles")
+starsNb = 2
+
+[node name="SideParticles" type="Node2D" parent="."]
+position = Vector2( -323, 0 )
+
+[node name="Particles2D" type="Particles2D" parent="SideParticles"]
+position = Vector2( 623, 110 )
+emitting = false
+amount = 200
+lifetime = 1.5
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource( 4 )
+
+[node name="Particles2D2" type="Particles2D" parent="SideParticles"]
+position = Vector2( 1294, 107 )
+emitting = false
+amount = 200
+lifetime = 1.5
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 130.0
+
+[node name="StarsContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1920.0
+alignment = 1
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 4.0
+margin_right = 1920.0
+margin_bottom = 130.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Container"]
+margin_right = 1920.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "IMPRESSIVE !"
+align = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Container"]
+margin_top = 65.0
+margin_right = 1920.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "TRY TO REACH 5000 NEXT TIME !"
+align = 1

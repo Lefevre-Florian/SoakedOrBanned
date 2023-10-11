@@ -1,0 +1,52 @@
+keys;en;fr
+LABEL_TITLE;Soaked or banned;Soaked or banned
+LABEL_PLAY;Play;Jouer
+LABEL_LEVEL;Level;Niveau
+LABEL_NEXT;Next;Suivant
+LOGIN_TITLE;Login;Connexion
+WIN_TO_MAP;Back to map;Retour a la carte
+SCOREBOARD_TITLE;Scoreboard;Tableau des scores
+LABEL_OPTION;Options;Parametres
+LABEL_CREDITS;Credits;Credits
+LABEL_QUIT;Quit;Quitter
+INCORRECT_INFORMATION;Missing or incorrect informations;Informations manquantes ou incorrectes
+LOGIN_BUTTON;Login;Se connecter
+LABEL_PASSWORD;Password;Mot de passe
+LABEL_USERNAME;Username;Nom d'utilisateur
+LOGOUT_BUTTON;Logout;Se déconnecter
+ASK_LOGOUT;Do you want to logout ?;Voulez-vous vous déconnecter ?
+LABEL_RULES;Rules;Regles
+LABEL_PAR;Par;Par
+LABEL_ACTIONS;Actions;Actions
+LABEL_AUTHOR;Author;Auteur
+RULES;In this game, you must use the two characters at your disposal to take each of their crates to their objective square. To do this you will have to alternate between the characters and make them help each other;Dans ce jeu, vous devez utiliser les deux personnages a votre disposition pour emmener chacune de leurs caisses sur leur case d objectif. Pour cela il vous faudra alterner entre les personnages et les faire s entraider
+CONTROL_1;Move;Se deplacer
+CONTROL_2;Change Character;Changer de Personnage
+TIP;Tip;Astuce
+LEVEL_0_TIP_1;Pushing a crate with one character creates a gateway for your second character. This very important mechanic to understand is key in this game. Just as important to note, it is possible to push a crate while the other character is on it ;Pousser une caisse avec un personnage cree une passerelle pour votre second personnage. Cette mecanique tres importante a comprendre est la cle dans ce jeu. Tout aussi important a noter, il est possible de pousser une caisse pendant que l autre personnage est dessus 
+LEVEL_0_TIP_2;Now that the second character has been able to get out of his first zone, it is now possible for him to push his own crate to discover the counterpart of this particular mechanic. It is also possible to push a crate on top of a crate of the other type ;Maintenant que le second personnage a pu sortir de sa premiere zone, il lui est maintenant possible de pousser sa propre caisse pour decouvrir le pendant de cette mecanique particuliere. Il est egalement possible de pousser une caisse sur une caisse de l autre type 
+LEVEL_0_TIP_3;Last tip. Most of the levels are based on the principle of alternating between characters regularly to progress in the levels little by little, so you ll have to analyze the situation well to understand who to play with first. Good luck ;Dernier conseil. La plupart des niveaux sont bases sur le principe d alterner entre les personnages regulierement pour progresser dans les niveaux petit a petit, il faudra donc bien analyser la situation pour comprendre avec qui jouer en premier. Bonne chance 
+LEVEL_1_TIP_1;A great level of warm-up but ultimately little to do ;Un grand niveau de mise en jambe mais finalement peu de choses a faire 
+LEVEL_1_TIP_2;Guide your first character to his crate and do what needs to be done. Then do the same with the second character and that s it;Guidez votre premier personnage vers sa caisse et faites ce qu il y a a faire. Faites ensuite de meme avec le second personnage et le tour est joue
+LEVEL_1_TIP_3;Not much more to say here, now get ready to use what you ve learned so far for the levels to come. Don t hesitate to access this help panel if the situation seems too complex ;Pas grand chose de plus a dire ici, preparez vous desormais a mettre en place ce que vous avez appris jusque la pour les niveaux a venir. N hesitez pas a acceder a ce panneau d aide si la situation semble trop complexe 
+LEVEL_2_TIP_1;The first character won t be able to do anything without the help of the second character s crate, so help the second character move his crate to the left to make it move;Le premier personnage ne pourra rien faire sans l aide de la caisse du second, aidez ce dernier a passer sa caisse a gauche pour la faire progresser
+LEVEL_2_TIP_2;The second player probably needs a little help to be placed on the right side of his crate to continue;Le second joueur a sans doute besoin d un peu d aide pour etre place du bon cote de sa caisse pour continuer
+LEVEL_2_TIP_3;Now all you have to do is place each crate in the right place ;Desormais il ne reste plus qu a placer chaque caisse au bon endroit 
+LEVEL_3_TIP_1;It looks like your second player needs help to get to the other side of his crate;Il semblerait que votre second joueur ait besoin d aide pour passer de l autre cote de sa caisse
+LEVEL_3_TIP_2;Now there must be a way to get your first player s crate to the other side of the center column to line up with their objective;Maintenant il doit y avoir un moyen de passer la caisse de votre premier joueur de l autre cote de la colonne centrale pour l aligner avec son objectif
+LEVEL_3_TIP_3;Now all you need is a simple bridge system to complete the level;Desormais il ne plus manquer qu un simple systeme de passerelle pour terminer le niveau
+LEVEL_4_TIP_1;Your second player seems to be blocked, help him to come out from a certain side so as not to stuck the crate of your first player;Votre second joueur semble bloque, aidez-le a sortir par un certain cote pour ne pas bloquer la caisse de votre premier joueur
+LEVEL_4_TIP_2;A bridge could be very useful to get the second player s crate to the isolated target. Be careful though, once this is done your first player may need help to finish his mission with his own crate;Une passerelle pourrait etre bien utile pour faire atteindre une caisse du second joueur sur la cible isolee. Faites bien attention cependant, une fois cela fait il se pourrait que votre premier joueur ait besoin d aide pour finir sa mission avec sa propre caisse
+LEVEL_4_TIP_3;Perhaps placing the second player s second crate in a certain location could allow the first player to go around his crate and take it off the edge of his playing area;Peut-etre que placer la seconde caisse du second joueur a un certain endroit pourrait permettre au premier joueur de contourner sa caisse pour la decoller du bord de sa zone de jeu
+LEVEL_5_TIP_1;A simple exit of the second character followed by a serpentine path. Or at last that looks simple;Une sortie simple du second personnage suivi d un chemin serpentueux. Ou du moins qui semble simple
+LEVEL_5_TIP_2;There must be a way to get the first player to go around his crate and push it in the right direction with a little help. Maybe with another crate for example;Il doit sans doute y avoir un moyen de faire contourner sa caisse au premier joueur pour la pousser dans le bon sens avec un peu d aide. Peut-etre avec une autre caisse par exemple
+LEVEL_5_TIP_3;Only a bridge game to complete this level as simply as possible;Plus qu un jeu de passerelle pour completer ce niveau le plus simplement possible
+LEVEL_6_TIP_1;A more complex situation than it seems, maybe helping the second player get his crate out of this corner might help;Une situation plus complexe qu il n y parait, Peut-etre qu aider le second joueur a sortir sa caisse de ce coin pourrait aider
+LEVEL_6_TIP_2;From this point on, it s a matter of not rushing too much, your first character probably needs to take a little walk around the crate to finish his work. With some help maybe;A partir de la, il s agira de ne pas trop se precipiter, votre premier personnage a sans doute besoin de faire un petit tour de caisse pour achever son travail. Avec un peu d'aide peut etre
+LEVEL_6_TIP_3;If you ve managed to get your first character behind the crate, all that s left to do is finish the level ;Si vous avez bien reussi a mener votre premier personnage derriere sa caisse, il ne plus lui rester qu a finir le niveau 
+LEVEL_7_TIP_1;Some back and forth will be necessary and a lot of help in placing the crates will be needed. Creating a first gateway and having your first player make a first trip to unlock his second crate seems to be necessary;Des allers-retours seront necessaires et beaucoup d entraide dans le placement des caisses seront necessaires. Creer une premiere passerelle et faire faire un premier voyage a votre premier joueur pour debloquer sa seconde caisse semble etre necessaire
+LEVEL_7_TIP_2;Then it will be a matter of making the other crate available to the first player to complete a first objective;Ensuite il s agira de mettre a disposition du premier joueur l autre caisse pour pouvoir completer un premier objectif
+LEVEL_7_TIP_3;Be careful to complete the objectives in the right order, it is easy to make mistakes in the order of completion of the objectives as the crates act in concert with each other to allow you to pass;Attention a bien completer les objectifs dans le bon ordre, il est facile de se tromper dans l ordre de completion des objectifs alors que les caisses agissent de concert les unes avec les autres pour se permettre de passer
+LEVEL_8_TIP_1;As in the previous level, step-by-step is the order of the day. Every interaction that seems to open a path for your other player may turn out to be one. Extra tip, think of the level as two separate levels;A l instar du niveau precedent le pas a pas sera ici de mise. Chaque interaction qui semble ouvrir une voie a votre autre joueur pourrait bien se reveler en etre une. Conseil supplementaire, voyez le niveau comme deux niveaux distincts
+LEVEL_8_TIP_2;For the upper left part it will be a matter of figuring out how to help the second player accomplish his mission without blocking him from doing so. Step by step;Pour la partie superieure gauche il s agira de trouver comment aider le second a accomplir sa mission sans le bloquer dans l operation. Pas a pas
+LEVEL_8_TIP_3;For the lower right part you have to understand who needs which bridge at which time to allow the second player to accomplish his mission while allowing the first to be in the right place to accomplish his;Pour la partie inferieure droite il faut bien comprendre qui a besoin de quelle passerelle a quel moment pour permettre au second joueur d accomplir sa mission tout en permettant au premier d etre au bon endroit pour accomplir la sienne

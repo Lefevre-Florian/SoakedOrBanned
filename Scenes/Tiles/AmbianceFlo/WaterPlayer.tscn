@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/BaseAssets/WaterplayerPlayerGoingLeftReal.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Objects/Player.cs" type="Script" id=2]
+[ext_resource path="res://Assets/BaseAssets/WaterplayerPlayerGoingRightReal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/BaseAssets/WaterplayerPlayerGoingUpReal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BaseAssets/WaterplayerPlayerGoingDownReal.png" type="Texture" id=5]
+
+[node name="WaterPlayer" type="Sprite"]
+texture = ExtResource( 5 )
+offset = Vector2( 0, -30 )
+script = ExtResource( 2 )
+_isWaterType = true
+directionsTextures = [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]

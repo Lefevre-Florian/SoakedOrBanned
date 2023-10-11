@@ -1,0 +1,9 @@
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\bin\ExportRelease\GOJIRA_SOKOBAN.dll
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\bin\ExportRelease\GOJIRA_SOKOBAN.pdb
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.csproj.AssemblyReference.cache
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.AssemblyInfoInputs.cache
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.AssemblyInfo.cs
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.csproj.CoreCompileInputs.cache
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.dll
+C:\Users\lefev\Desktop\Cours\ISART\GDP2022_2023_SOKOBAN_GOJIRA\02_GOJIRA\GOJIRA_SOKOBAN\.mono\temp\obj\ExportRelease\GOJIRA_SOKOBAN.pdb

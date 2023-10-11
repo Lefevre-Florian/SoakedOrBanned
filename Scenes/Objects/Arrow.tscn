@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Objects/ArrowIndicator.cs" type="Script" id=1]
+
+[node name="Arrow" type="Polygon2D"]
+color = Color( 0.760784, 0.760784, 0.760784, 1 )
+polygon = PoolVector2Array( 0, 0, -16, -24, 16, -24 )
+script = ExtResource( 1 )
+movementYVelocity = 15.0
+hoverDisplacement = 25.0
+movementDuration = 1.75
+movementTransition = 10
+movementEaseType = 2

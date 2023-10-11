@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Managers/TipsManager.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/UIElements/TipLabels.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/UIElements/RulesContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/UIElements/ControlsHelper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonPressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonNormal.tres" type="StyleBox" id=7]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonHover.tres" type="StyleBox" id=8]
+
+[node name="TipsWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+globalPanelPath = NodePath("CanvasLayer/Panel")
+tipButPath = NodePath("CanvasLayer/Panel/TipsButton")
+prevTipButPath = NodePath("CanvasLayer/Panel/PreviousButton")
+nextTipButPath = NodePath("CanvasLayer/Panel/NextButton")
+tipSectionPath = NodePath("CanvasLayer/Panel/TipContainer/Tip")
+rulesPath = NodePath("CanvasLayer/Panel/RulesContainer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+margin_right = 440.0
+margin_bottom = 760.0
+
+[node name="TipsButton" type="Button" parent="CanvasLayer/Panel"]
+margin_left = 16.0
+margin_right = 230.0
+margin_bottom = 87.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+text = "    TIPS "
+
+[node name="PreviousButton" type="Button" parent="CanvasLayer/Panel"]
+margin_left = 256.0
+margin_right = 312.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+text = "<"
+
+[node name="NextButton" type="Button" parent="CanvasLayer/Panel"]
+margin_left = 336.0
+margin_right = 392.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+text = ">"
+
+[node name="TipContainer" type="Control" parent="CanvasLayer/Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Tip" parent="CanvasLayer/Panel/TipContainer" instance=ExtResource( 3 )]
+margin_left = 78.0
+margin_top = 49.0
+margin_right = 336.0
+margin_bottom = 504.0
+
+[node name="RulesContainer" parent="CanvasLayer/Panel" instance=ExtResource( 4 )]
+
+[node name="Controls" parent="CanvasLayer/Panel" instance=ExtResource( 5 )]

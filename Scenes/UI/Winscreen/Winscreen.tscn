@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Sokoban/UI/BaseTranslation/TranslableButton.cs" type="Script" id=1]
+[ext_resource path="res://Ressources/Font/tmp_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Managers/WinScreenManager.cs" type="Script" id=3]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonPressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonNormal.tres" type="StyleBox" id=5]
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonHover.tres" type="StyleBox" id=7]
+[ext_resource path="res://Scenes/UI/LevelSelector/Map.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[node name="WinScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+threeStarsScenePath = "res://Scenes/UI/Winscreen/WinThreeStars.tscn"
+twoStarsScenePath = "res://Scenes/UI/Winscreen/WinTwoStars.tscn"
+oneStarScenePath = "res://Scenes/UI/Winscreen/WinOneStar.tscn"
+mapScenePath = "res://Scenes/UI/LevelSelector/Map.tscn"
+worldPackedScene = ExtResource( 8 )
+dynamicLabelsList = [ NodePath("WinStatsPanel/VBoxContainer/TileLabelContainer/LevelNb"), NodePath("WinStatsPanel/VBoxContainer/VBoxContainer/Score/ScoreNb"), NodePath("WinStatsPanel/VBoxContainer/VBoxContainer/Actions/ActionsNb") ]
+starSceneContainerPath = NodePath("WinStatsPanel/VBoxContainer/StarsSceneContainer")
+toMapButtonPath = NodePath("WinStatsPanel/VBoxContainer/VBoxContainer/Actions3/ToMap")
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.54902 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="WinStatsPanel" type="Panel" parent="."]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 1600.0
+margin_bottom = 1024.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinStatsPanel"]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 1280.0
+margin_bottom = 944.0
+
+[node name="TileLabelContainer" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer"]
+margin_right = 1272.0
+margin_bottom = 61.0
+alignment = 1
+
+[node name="LevelTxt" type="Label" parent="WinStatsPanel/VBoxContainer/TileLabelContainer"]
+margin_left = 423.0
+margin_right = 556.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Level "
+
+[node name="LevelNb" type="Label" parent="WinStatsPanel/VBoxContainer/TileLabelContainer"]
+margin_left = 560.0
+margin_right = 600.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "0 "
+
+[node name="Separatortxt" type="Label" parent="WinStatsPanel/VBoxContainer/TileLabelContainer"]
+margin_left = 604.0
+margin_right = 647.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = " : "
+
+[node name="VictoryTxt" type="Label" parent="WinStatsPanel/VBoxContainer/TileLabelContainer"]
+margin_left = 651.0
+margin_right = 848.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Victory !"
+
+[node name="StarsSceneContainer" type="VBoxContainer" parent="WinStatsPanel/VBoxContainer"]
+margin_top = 65.0
+margin_right = 1272.0
+margin_bottom = 65.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinStatsPanel/VBoxContainer"]
+margin_top = 69.0
+margin_right = 1272.0
+margin_bottom = 420.0
+
+[node name="Separator" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer/VBoxContainer"]
+margin_right = 1272.0
+margin_bottom = 61.0
+alignment = 1
+
+[node name="Void" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Separator"]
+margin_left = 636.0
+margin_right = 636.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+
+[node name="Score" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 1272.0
+margin_bottom = 126.0
+alignment = 1
+
+[node name="ScoreTxt" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Score"]
+margin_left = 534.0
+margin_right = 676.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Score "
+
+[node name="Separatortxt" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Score"]
+margin_left = 680.0
+margin_right = 708.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = ": "
+
+[node name="ScoreNb" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Score"]
+margin_left = 712.0
+margin_right = 737.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+
+[node name="Actions" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 1272.0
+margin_bottom = 191.0
+alignment = 1
+
+[node name="ActionsTxt" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Actions"]
+margin_left = 508.0
+margin_right = 702.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Actions "
+
+[node name="Separatortxt" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Actions"]
+margin_left = 706.0
+margin_right = 734.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = ": "
+
+[node name="ActionsNb" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Actions"]
+margin_left = 738.0
+margin_right = 763.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+
+[node name="Separator2" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer/VBoxContainer"]
+margin_top = 195.0
+margin_right = 1272.0
+margin_bottom = 276.0
+alignment = 1
+
+[node name="Void" type="Label" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Separator2"]
+margin_left = 636.0
+margin_right = 636.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Actions3" type="HBoxContainer" parent="WinStatsPanel/VBoxContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 1272.0
+margin_bottom = 351.0
+alignment = 1
+
+[node name="ToMap" type="Button" parent="WinStatsPanel/VBoxContainer/VBoxContainer/Actions3"]
+margin_left = 484.0
+margin_right = 788.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+text = "WIN_TO_MAP"
+script = ExtResource( 1 )

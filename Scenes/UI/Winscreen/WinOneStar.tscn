@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Ressources/Font/tmp_font_lowerSize.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/StarLoader.cs" type="Script" id=3]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="WinThreeStars" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+starPath = "res://Scenes/UI/Winscreen/Stars/BronzeStar.tscn"
+starContainerPath = NodePath("VBoxContainer/StarsContainer")
+sideParticlesContainerPath = NodePath("SideParticles")
+starsNb = 1
+
+[node name="SideParticles" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="SideParticles"]
+process_material = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 130.0
+
+[node name="StarsContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1920.0
+alignment = 1
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 4.0
+margin_right = 1920.0
+margin_bottom = 130.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Container"]
+margin_right = 1920.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "GREAT JOB !"
+align = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Container"]
+margin_top = 65.0
+margin_right = 1920.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "REACH 2000 FOR SILVERS STARS !"
+align = 1

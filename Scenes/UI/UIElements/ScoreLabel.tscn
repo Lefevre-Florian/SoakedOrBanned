@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/ScoreLabel.cs" type="Script" id=1]
+[ext_resource path="res://Ressources/Font/tmp_font_veryLowerSize.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.329412, 0.52549, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 360
+corner_radius_top_right = 360
+corner_radius_bottom_right = 360
+corner_radius_bottom_left = 360
+
+[node name="ScoreLabel" type="Panel"]
+margin_right = 650.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 650, 50 )
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+rankLabelPath = NodePath("Rank/RankLabel")
+usernameLabelPath = NodePath("Name")
+scoreLabelPath = NodePath("Score")
+labelPrintDuration = 0.25
+labelEaseType = 3
+
+[node name="Rank" type="Panel" parent="."]
+margin_left = -24.0
+margin_right = 24.0
+margin_bottom = 48.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="RankLabel" type="Label" parent="Rank"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -24.0
+margin_right = 32.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Name" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -261.0
+margin_top = -25.0
+margin_right = 123.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+valign = 1
+
+[node name="Score" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -138.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "XXXX"
+align = 1
+valign = 1

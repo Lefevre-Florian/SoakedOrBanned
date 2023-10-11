@@ -1,0 +1,812 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Ressources/Font/Watermelon.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Ressources/Font/tmp_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Sokoban/UI/Screen/TitleCard.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/Chain/UIChain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Sokoban/UI/BaseTranslation/TranslableButton.cs" type="Script" id=5]
+[ext_resource path="res://Scripts/Sokoban/UI/CustomButtons/CustomOptionButton.cs" type="Script" id=6]
+[ext_resource path="res://Scripts/Sokoban/UI/BaseTranslation/TranslableLabel.cs" type="Script" id=7]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonNormal.tres" type="StyleBox" id=8]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonPressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardButtonHover.tres" type="StyleBox" id=10]
+[ext_resource path="res://Ressources/ButtonStyleBox/TitleCardQuitButton.tres" type="StyleBox" id=11]
+[ext_resource path="res://Assets/white_circle.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/UI/LevelSelector/Map.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/UI/Credits.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=7]
+size = 109
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=5]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 7 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 10 )
+Button/styles/normal = ExtResource( 8 )
+Button/styles/pressed = ExtResource( 9 )
+
+[sub_resource type="Shader" id=23]
+code = "shader_type canvas_item;
+
+
+
+uniform vec4 WATER_COL : hint_color =  vec4(0.04, 0.38, 0.88, 1.0);
+
+uniform vec4 WATER2_COL : hint_color =  vec4(0.04, 0.35, 0.78, 1.0);
+
+uniform vec4 FOAM_COL : hint_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
+
+
+
+uniform float distortion_speed = 2.0;
+
+uniform vec2 tile = vec2(5.0, 5.0);
+
+uniform float wave_speed = 1.5;
+
+
+
+const float TWOPI = 6.283185307;
+
+const float SIXPI = 18.84955592;
+
+
+
+
+
+
+
+float circ(vec2 pos, vec2 c, float s)
+
+{
+
+    c = abs(pos - c);
+
+    c = min(c, 1.0 - c);
+
+
+
+    return smoothstep(0.0, 0.002, sqrt(s) - sqrt(dot(c, c))) * -1.0;
+
+}
+
+
+
+
+
+float waterlayer(vec2 uv)
+
+{
+
+    uv = mod(uv, 1.0); // Clamp to [0..1]
+
+    float ret = 1.0;
+
+    ret += circ(uv, vec2(0.37378, 0.277169), 0.0268181);
+
+    ret += circ(uv, vec2(0.0317477, 0.540372), 0.0193742);
+
+    ret += circ(uv, vec2(0.430044, 0.882218), 0.0232337);
+
+    ret += circ(uv, vec2(0.641033, 0.695106), 0.0117864);
+
+    ret += circ(uv, vec2(0.0146398, 0.0791346), 0.0299458);
+
+    ret += circ(uv, vec2(0.43871, 0.394445), 0.0289087);
+
+    ret += circ(uv, vec2(0.909446, 0.878141), 0.028466);
+
+    ret += circ(uv, vec2(0.310149, 0.686637), 0.0128496);
+
+    ret += circ(uv, vec2(0.928617, 0.195986), 0.0152041);
+
+    ret += circ(uv, vec2(0.0438506, 0.868153), 0.0268601);
+
+    ret += circ(uv, vec2(0.308619, 0.194937), 0.00806102);
+
+    ret += circ(uv, vec2(0.349922, 0.449714), 0.00928667);
+
+    ret += circ(uv, vec2(0.0449556, 0.953415), 0.023126);
+
+    ret += circ(uv, vec2(0.117761, 0.503309), 0.0151272);
+
+    ret += circ(uv, vec2(0.563517, 0.244991), 0.0292322);
+
+    ret += circ(uv, vec2(0.566936, 0.954457), 0.00981141);
+
+    ret += circ(uv, vec2(0.0489944, 0.200931), 0.0178746);
+
+    ret += circ(uv, vec2(0.569297, 0.624893), 0.0132408);
+
+    ret += circ(uv, vec2(0.298347, 0.710972), 0.0114426);
+
+    ret += circ(uv, vec2(0.878141, 0.771279), 0.00322719);
+
+    ret += circ(uv, vec2(0.150995, 0.376221), 0.00216157);
+
+    ret += circ(uv, vec2(0.119673, 0.541984), 0.0124621);
+
+    ret += circ(uv, vec2(0.629598, 0.295629), 0.0198736);
+
+    ret += circ(uv, vec2(0.334357, 0.266278), 0.0187145);
+
+    ret += circ(uv, vec2(0.918044, 0.968163), 0.0182928);
+
+    ret += circ(uv, vec2(0.965445, 0.505026), 0.006348);
+
+    ret += circ(uv, vec2(0.514847, 0.865444), 0.00623523);
+
+    ret += circ(uv, vec2(0.710575, 0.0415131), 0.00322689);
+
+    ret += circ(uv, vec2(0.71403, 0.576945), 0.0215641);
+
+    ret += circ(uv, vec2(0.748873, 0.413325), 0.0110795);
+
+    ret += circ(uv, vec2(0.0623365, 0.896713), 0.0236203);
+
+    ret += circ(uv, vec2(0.980482, 0.473849), 0.00573439);
+
+    ret += circ(uv, vec2(0.647463, 0.654349), 0.0188713);
+
+    ret += circ(uv, vec2(0.651406, 0.981297), 0.00710875);
+
+    ret += circ(uv, vec2(0.428928, 0.382426), 0.0298806);
+
+    ret += circ(uv, vec2(0.811545, 0.62568), 0.00265539);
+
+    ret += circ(uv, vec2(0.400787, 0.74162), 0.00486609);
+
+    ret += circ(uv, vec2(0.331283, 0.418536), 0.00598028);
+
+    ret += circ(uv, vec2(0.894762, 0.0657997), 0.00760375);
+
+    ret += circ(uv, vec2(0.525104, 0.572233), 0.0141796);
+
+    ret += circ(uv, vec2(0.431526, 0.911372), 0.0213234);
+
+    ret += circ(uv, vec2(0.658212, 0.910553), 0.000741023);
+
+    ret += circ(uv, vec2(0.514523, 0.243263), 0.0270685);
+
+    ret += circ(uv, vec2(0.0249494, 0.252872), 0.00876653);
+
+    ret += circ(uv, vec2(0.502214, 0.47269), 0.0234534);
+
+    ret += circ(uv, vec2(0.693271, 0.431469), 0.0246533);
+
+    ret += circ(uv, vec2(0.415, 0.884418), 0.0271696);
+
+    ret += circ(uv, vec2(0.149073, 0.41204), 0.00497198);
+
+    ret += circ(uv, vec2(0.533816, 0.897634), 0.00650833);
+
+    ret += circ(uv, vec2(0.0409132, 0.83406), 0.0191398);
+
+    ret += circ(uv, vec2(0.638585, 0.646019), 0.0206129);
+
+    ret += circ(uv, vec2(0.660342, 0.966541), 0.0053511);
+
+    ret += circ(uv, vec2(0.513783, 0.142233), 0.00471653);
+
+    ret += circ(uv, vec2(0.124305, 0.644263), 0.00116724);
+
+    ret += circ(uv, vec2(0.99871, 0.583864), 0.0107329);
+
+    ret += circ(uv, vec2(0.894879, 0.233289), 0.00667092);
+
+    ret += circ(uv, vec2(0.246286, 0.682766), 0.00411623);
+
+    ret += circ(uv, vec2(0.0761895, 0.16327), 0.0145935);
+
+    ret += circ(uv, vec2(0.949386, 0.802936), 0.0100873);
+
+    ret += circ(uv, vec2(0.480122, 0.196554), 0.0110185);
+
+    ret += circ(uv, vec2(0.896854, 0.803707), 0.013969);
+
+    ret += circ(uv, vec2(0.292865, 0.762973), 0.00566413);
+
+    ret += circ(uv, vec2(0.0995585, 0.117457), 0.00869407);
+
+    ret += circ(uv, vec2(0.377713, 0.00335442), 0.0063147);
+
+    ret += circ(uv, vec2(0.506365, 0.531118), 0.0144016);
+
+    ret += circ(uv, vec2(0.408806, 0.894771), 0.0243923);
+
+    ret += circ(uv, vec2(0.143579, 0.85138), 0.00418529);
+
+    ret += circ(uv, vec2(0.0902811, 0.181775), 0.0108896);
+
+    ret += circ(uv, vec2(0.780695, 0.394644), 0.00475475);
+
+    ret += circ(uv, vec2(0.298036, 0.625531), 0.00325285);
+
+    ret += circ(uv, vec2(0.218423, 0.714537), 0.00157212);
+
+    ret += circ(uv, vec2(0.658836, 0.159556), 0.00225897);
+
+    ret += circ(uv, vec2(0.987324, 0.146545), 0.0288391);
+
+    ret += circ(uv, vec2(0.222646, 0.251694), 0.00092276);
+
+    ret += circ(uv, vec2(0.159826, 0.528063), 0.00605293);
+
+	return max(ret, 0.0);
+
+}
+
+
+
+vec3 water(vec2 uv, vec3 cdir, float iTime)
+
+{
+
+    uv *= vec2(0.25);
+
+
+
+    // Parallax height distortion with two directional waves at
+
+    // slightly different angles.
+
+    vec2 a = 0.025 * cdir.xz / cdir.y; // Parallax offset
+
+    float h = sin(uv.x + iTime); // Height at UV
+
+    uv += a * h;
+
+    h = sin(0.841471 * uv.x - 0.540302 * uv.y + iTime);
+
+    uv += a * h;
+
+
+
+    // Texture distortion
+
+    float d1 = mod(uv.x + uv.y, TWOPI);
+
+    float d2 = mod((uv.x + uv.y + 0.25) * 1.3, SIXPI);
+
+    d1 = iTime * 0.07 + d1;
+
+    d2 = iTime * 0.5 + d2;
+
+    vec2 dist = vec2(
+
+    	sin(d1) * 0.15 + sin(d2) * 0.05,
+
+    	cos(d1) * 0.15 + cos(d2) * 0.05
+
+    );
+
+
+
+    vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy));
+
+    ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
+
+    return ret;
+
+}
+
+
+
+void fragment() {
+
+	vec2 uv = UV;
+
+   COLOR.rgb = vec3(water(uv * tile, vec3(0,1,0), TIME * distortion_speed));
+
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 23 )
+shader_param/WATER_COL = Color( 0.356863, 0.509804, 0.733333, 1 )
+shader_param/WATER2_COL = Color( 0.54902, 0.65098, 0.788235, 1 )
+shader_param/FOAM_COL = Color( 0.8125, 0.9609, 0.9648, 1 )
+shader_param/distortion_speed = 5.0
+shader_param/tile = Vector2( 50, 50 )
+shader_param/wave_speed = 4.14721e+11
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 0.94981, 1, 0.128906, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.938202, 0.00795448 ), -2.69697, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 1, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 0.27
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.2
+scale_random = 0.11
+scale_curve = SubResource( 17 )
+color_ramp = SubResource( 15 )
+
+[sub_resource type="Theme" id=3]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 2 )
+Label/styles/normal = null
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 0.510365, 0.0742188, 1 )
+border_width_bottom = 10
+border_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.788574, 0.391056, 0.0369644, 1 )
+border_width_top = 25
+border_color = Color( 0.160784, 0.160784, 0.160784, 0 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.929412, 0.462745, 0.0470588, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.866667, 0.866667, 0.866667, 1 )
+border_blend = true
+corner_radius_top_left = 35
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 35
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.0627451, 0.0588235, 0.0588235, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="Animation" id=12]
+resource_name = "Enter"
+length = 5.0
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("Buttons/Play:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.51, 2.01, 2.31 ),
+"transitions": PoolRealArray( 0.297302, 0.297302, 0.0625, 1 ),
+"update": 0,
+"values": [ Vector2( 490, 1074 ), Vector2( 490, 1074 ), Vector2( 369, 331 ), Vector2( 504, 374 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Buttons/Option:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.51, 2.31, 3.81 ),
+"transitions": PoolRealArray( 1, 1, 0.225313, 1 ),
+"update": 0,
+"values": [ Vector2( 495, 1284 ), Vector2( 495, 1284 ), Vector2( 495, 1284 ), Vector2( 497, 589 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Buttons/Credits:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.51, 2.31, 3.81 ),
+"transitions": PoolRealArray( 1, 1, 0.217638, 1 ),
+"update": 0,
+"values": [ Vector2( 496, 1448 ), Vector2( 496, 1448 ), Vector2( 496, 1448 ), Vector2( 496, 742 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Buttons/Quit:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.51, 3.33, 4.32 ),
+"transitions": PoolRealArray( 1, 1, 0.287175, 1 ),
+"update": 0,
+"values": [ Vector2( -50, 1089 ), Vector2( -50, 1089 ), Vector2( -50, 1089 ), Vector2( -50, 952 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Buttons/Play:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.51, 2.01, 2.31 ),
+"transitions": PoolRealArray( 0.378929, 0.378929, 0.0412346, 1 ),
+"update": 0,
+"values": [ Vector2( 881, 262 ), Vector2( 881, 262 ), Vector2( 1111, 378 ), Vector2( 881, 262 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Buttons/Play:rect_pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.51, 2.01, 2.31 ),
+"transitions": PoolRealArray( 1, 1, 0.0625001, 1 ),
+"update": 0,
+"values": [ Vector2( 440, 131 ), Vector2( 440, 131 ), Vector2( 555, 189 ), Vector2( 440, 131 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.51, 2.04, 2.13, 2.37 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Camera2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.51 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 962, 539 ), Vector2( 962, 539 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Particles2D3:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Buttons/Play:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 881, 262 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Buttons/Option:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 497, 589 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Buttons/Credits:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 496, 742 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Buttons/Quit:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -50, 952 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Buttons/Play:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 490, 1074 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Buttons/Play:rect_pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 440, 131 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Camera2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Camera2D:zoom")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Particles2D3:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[node name="TitleCard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 5 )
+script = ExtResource( 3 )
+animationPath = NodePath("AnimationPlayer")
+playButtonPath = NodePath("Buttons/Play")
+optionButtonPath = NodePath("Buttons/Option")
+creditsButtonPath = NodePath("Buttons/Credits")
+quitButtonPath = NodePath("Buttons/Quit")
+loginButtonPath = NodePath("Buttons/Login")
+loginLabelPath = NodePath("Buttons/LoginLabel/Label")
+levelSelectorPath = "res://Scenes/UI/LevelSelector/Map.tscn"
+creditsPath = "res://Scenes/UI/Credits.tscn"
+loginPath = "res://Scenes/UI/Login.tscn"
+worldPackedScene = ExtResource( 13 )
+creditsPackedScene = ExtResource( 14 )
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.752941 )
+material = SubResource( 11 )
+margin_left = -207.0
+margin_top = -143.0
+margin_right = -126.0
+margin_bottom = -99.0
+rect_scale = Vector2( 28.5364, 30.601 )
+
+[node name="Particles2D3" type="Particles2D" parent="."]
+position = Vector2( 916, 487 )
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 18 )
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 421.0
+margin_top = 30.0
+margin_right = 1100.0
+margin_bottom = 270.0
+rect_scale = Vector2( 2, 2 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 3 )
+text = "LABEL_TITLE"
+autowrap = true
+script = ExtResource( 7 )
+
+[node name="Node2D" parent="Label" instance=ExtResource( 4 )]
+position = Vector2( 524, 82.5 )
+rotation = 2.36533
+scale = Vector2( 0.5, 0.5 )
+length = 5
+
+[node name="Buttons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Play" type="Button" parent="Buttons"]
+margin_left = 490.0
+margin_top = 1074.0
+margin_right = 1371.0
+margin_bottom = 1336.0
+rect_scale = Vector2( 0.7, 0.7 )
+rect_pivot_offset = Vector2( 440, 131 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "LABEL_PLAY"
+script = ExtResource( 5 )
+MAX_SCALE = 0.9
+
+[node name="Option" type="Button" parent="Buttons"]
+margin_left = 497.0
+margin_top = 589.0
+margin_right = 1378.01
+margin_bottom = 852.002
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 440, 131 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "LABEL_OPTION"
+script = ExtResource( 6 )
+MAX_SCALE = 0.7
+optionsPath = "res://Scenes/UI/Options.tscn"
+
+[node name="Credits" type="Button" parent="Buttons"]
+margin_left = 496.0
+margin_top = 742.0
+margin_right = 1377.0
+margin_bottom = 1004.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 440, 131 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+text = "LABEL_CREDITS"
+script = ExtResource( 5 )
+MAX_SCALE = 0.7
+
+[node name="Quit" type="Button" parent="Buttons"]
+margin_left = -50.0
+margin_top = 952.0
+margin_right = 443.0
+margin_bottom = 1072.0
+rect_scale = Vector2( 0.7, 0.7 )
+rect_pivot_offset = Vector2( 246, 60 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = ExtResource( 11 )
+enabled_focus_mode = 0
+text = "LABEL_QUIT"
+script = ExtResource( 5 )
+MAX_SCALE = 0.8
+
+[node name="LoginLabel" type="Panel" parent="Buttons"]
+margin_left = 1600.0
+margin_top = 928.0
+margin_right = 1880.0
+margin_bottom = 1000.0
+custom_styles/panel = SubResource( 20 )
+
+[node name="Label" type="Label" parent="Buttons/LoginLabel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 168.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "OFFLINE"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Login" type="Button" parent="Buttons"]
+margin_left = 1776.0
+margin_top = 904.0
+margin_right = 1892.0
+margin_bottom = 1024.0
+rect_min_size = Vector2( 100, 100 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="Camera2D" type="Camera2D" parent="."]

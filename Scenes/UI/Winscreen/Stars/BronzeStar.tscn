@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Winscreen/BronzeStar2.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Sokoban/UI/UIElements/Stars.cs" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.83871, 1 )
+colors = PoolColorArray( 0.937255, 0.560784, 0.0627451, 1, 0.937255, 0.560784, 0.0627451, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_ramp = SubResource( 2 )
+
+[node name="StarOne" type="TextureRect"]
+margin_left = 810.0
+margin_right = 1109.0
+margin_bottom = 281.0
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 150, 155 )
+amount = 300
+lifetime = 1.5
+randomness = 1.0
+process_material = SubResource( 3 )
