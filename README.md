@@ -1,5 +1,5 @@
 # SoakedOrBanned
-Just a small project made during my studies for a class
+Student project made in my first year.
 
 Project made using Godot 3.5;
 
